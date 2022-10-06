@@ -8,7 +8,7 @@
 // Dati
 const basePrice = 0.21;
 const youngDiscount = 0.2;
-const OldDiscount = 0.4;
+const oldDiscount = 0.4;
 let userPrice = 0;
 
 // Input
@@ -18,8 +18,26 @@ const userDistance = parseInt(prompt("Dimmi i chilometri da percorrere"));
 const userAge = parseInt(prompt("Dimmi la tua età"));
 // console.log(userAge, typeof(userAge));
 
+// Elaborazione ed output
 if (userAge < 18 ) {
     userPrice = basePrice * userDistance ;
     let userDiscountedPrice = ( userPrice - (userPrice * youngDiscount));
+    console.log("Prezzo da troncare:",userDiscountedPrice);
+    userDiscountedPrice = Math.trunc(userDiscountedPrice*100)/100;
     document.getElementById("result").innerHTML = userDiscountedPrice;
+}
+
+else if (userAge >= 65 ) {
+    userPrice = basePrice * userDistance ;
+    let userDiscountedPrice = ( userPrice - (userPrice * oldDiscount));
+    console.log("Prezzo da troncare:",userDiscountedPrice);
+    userDiscountedPrice = Math.trunc(userDiscountedPrice*100)/100;
+    document.getElementById("result").innerHTML = userDiscountedPrice;
+}
+
+else {
+    userPrice = basePrice * userDistance ;
+    console.log("Prezzo da troncare:",userPrice);
+    userPrice = Math.trunc(userPrice*100)/100;
+    document.getElementById("result").innerHTML = userPrice;
 }
